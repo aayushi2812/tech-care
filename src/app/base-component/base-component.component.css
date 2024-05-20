@@ -1,0 +1,35 @@
+.navigation{
+    display: flex;
+    justify-content: space-between;
+}
+.bi{
+    size: 20px;
+    height: 20px;
+    width: 20px;
+}
+.container{
+    width: 100%;
+    max-width: 100%;
+}
+.container-fluid{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+.navbar-collapse{
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+}
+.nav-item-p{
+    background-color: #01F0D0;
+    border-radius: 20px;
+    width: 120px;
+}
+.icons{
+    align-self: center;
+}
+.doctor{
+    padding-left: 5px;
+    padding-top: 8px;
+}

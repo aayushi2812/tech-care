@@ -1,0 +1,85 @@
+<div class="card">
+    <div class="card-body" style="height: 560px;" *ngIf="accounts">
+        <div style="display: flex;justify-content: center;">
+            <img [src]='accounts[3].profile_picture' alt="profile" width="200" height="200" />
+        </div>
+        <div style="display: flex;justify-content: center;">
+            <h3>{{accounts[3].name}}</h3>
+        </div>
+        <div class="info">
+            <div class="icon-profile">
+                <i class="bi bi-calendar h3"></i>
+            </div>
+            <div>
+                Date of Birth<br />
+                <span>{{accounts[3].date_of_birth}}</span>
+            </div>
+        </div>
+        <div class="info">
+            <div class="icon-profile">
+                <i class="bi bi-gender-female h3"></i>
+            </div>
+            <div>
+                Gender<br />
+                <span>{{accounts[3].gender}}</span>
+            </div>
+        </div>
+        <div class="info">
+            <div class="icon-profile">
+                <i class="bi bi-telephone h3"></i>
+            </div>
+            <div>
+                Contact Info.<br />
+                <span>{{accounts[3].phone_number}}</span>
+            </div>
+        </div>
+        <div class="info">
+            <div class="icon-profile">
+                <i class="bi bi-telephone h3"></i>
+            </div>
+            <div>
+                Emergency Contacts<br />
+                <span>{{accounts[3].emergency_contact}}</span>
+            </div>
+        </div>
+        <div class="info">
+            <div class="icon-profile">
+                <i class="bi bi-shield-fill-check h3"></i>
+            </div>
+            <div>
+                Insurance Provider<br />
+                <span>{{accounts[3].insurance_type}}</span>
+            </div>
+        </div>
+        <div style="display: flex;justify-content: center;padding-top: 5px;">
+            <button style="background-color: #01F0D0;border-radius: 20px;" mat-button>Show All Information</button>
+        </div>
+    </div>
+</div>
+<div class="card card-lab-results">
+    <div class="card-body test-body list-group">
+        <h2 style="padding-left: 10px;">Lab Results</h2>
+        <div class="items">
+        <div class="tests list-group-item">
+            <div><span class="test-text">Blood Tests</span></div>
+            <div><i class="bi bi-download"></i></div>
+        </div>
+        <div class="tests list-group-item">
+            <div><span class="test-text">CT Scans</span></div>
+            <div><i class="bi bi-download"></i></div>
+        </div>
+        <div class="tests list-group-item">
+            <div><span class="test-text">Radiology Reports</span></div>
+            <div><i class="bi bi-download"></i></div>
+        </div>
+        <div class="tests list-group-item">
+            <div><span class="test-text">X-Rays</span></div>
+            <div><i class="bi bi-download"></i></div>
+        </div>
+        <div class="tests list-group-item">
+            <div><span class="test-text">Urine Test</span></div>
+            <div><i class="bi bi-download"></i></div>
+        </div>
+    </div>
+    </div>
+</div>

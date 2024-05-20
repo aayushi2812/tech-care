@@ -1,0 +1,66 @@
+<div class="card">
+    <div class="card-body">
+        <div>
+            <h2>Diagnostic History</h2>
+            <canvas id="lineChart" style="height: 260px; width: 800px;background-color: #F4F0FE;"></canvas>
+        </div>
+
+        <div style="display: flex;justify-content: space-between;padding-top: 15px;">
+            <div class="card card-dh" style="background-color: #E0F3FA;">
+                <div class="card-body">
+                    <img src=".\assets\respiratory rate.svg" width="100" height="80" />
+                    <h3 style="margin: 0;">Respiratory Rate</h3>
+                    <h2 style="margin: 0;">20 bpm</h2>
+                    <h5 style="margin: 0;">Normal</h5>
+                </div>
+            </div>
+            <div class="card card-dh" style="background-color: #FFE6E9;">
+                <div class="card-body">
+                    <img src=".\assets\temperature.svg" width="100" height="80" />
+                    <h3 style="margin: 0;">Temperature</h3>
+                    <h2 style="margin: 0;">98.6 F</h2>
+                    <h5 style="margin: 0;">Normal</h5>
+                </div>
+            </div>
+            <div class="card card-dh" style="background-color: #FFE6F1;">
+                <div class="card-body">
+                    <img src=".\assets\HeartBPM.svg" width="100" height="80" />
+                    <h3 style="margin: 0;">Heart Rate</h3>
+                    <h2 style="margin: 0;">78 bpm</h2>
+                    <h5 style="margin: 0;">Normal</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 10px;height: 245px;">
+            <h2 style="padding-top: 10px;padding-left: 10px;">Diagnostic List</h2>
+            <div class="card-body" style="overflow-y: scroll;">   
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="overflow-y: scroll;">
+
+                    <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="diagnosis">
+                        <th mat-header-cell *matHeaderCellDef> Problem/Diagnosis </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef> Description </th>
+                        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

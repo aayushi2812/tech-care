@@ -1,0 +1,37 @@
+.icon-profile{
+    padding-right: 10px;
+}
+.info{
+    display: flex; 
+    height: 50px;
+}
+.tests{
+    display: flex;
+    justify-content: space-between;
+}
+.test-body{
+    height: 230px;
+}
+.test-text{
+    font-size: 15px;
+}
+.items{
+    overflow-y: scroll;
+}
+.card-lab-results{
+    margin-top: 10px;
+}
+::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+        background: rgb(199, 199, 199); /* color of the tracking area */
+        border-radius: 20px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: black;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgb(199, 199, 199);  /* creates padding around scroll thumb */
+  }
