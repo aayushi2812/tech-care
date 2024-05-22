@@ -9,8 +9,8 @@
             </div>
         </div>
         <div style="height: 730px;overflow-y: scroll;">
-            <ul *ngFor="let acc of accounts" class="list-group">
-                <div style="display: flex;border: none;" class="list-group-item">
+            <ul *ngFor="let acc of accounts, let i = index" class="list-group" (click)="selectedAccount(acc,i)">
+                <div class="list-group-item-action patientBox" [ngClass]="{'in-row': indexNum == i}">
                     <div style="padding-right: 10px;width: 20%;">
                         <img [src]='acc.profile_picture' alt="profile" width="50" height="50" />
                     </div>

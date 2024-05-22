@@ -11,5 +11,5 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [NgFor, NgIf, MatButtonModule]
 })
 export class ProfileComponent{
-  @Input() accounts: any;
+  @Input() currentAcc: any;
 }

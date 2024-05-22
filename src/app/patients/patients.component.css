@@ -12,3 +12,10 @@
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 3px solid rgb(199, 199, 199);  /* creates padding around scroll thumb */
   }
+
+.in-row {
+  background-color: #01F0D0;
+}
+.patientBox{
+  display: flex;border: none; border-radius: 20px;padding: 12px;
+}

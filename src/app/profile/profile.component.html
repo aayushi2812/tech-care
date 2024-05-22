@@ -1,10 +1,10 @@
 <div class="card">
-    <div class="card-body" style="height: 560px;" *ngIf="accounts">
+    <div class="card-body" style="height: 560px;" *ngIf="currentAcc">
         <div style="display: flex;justify-content: center;">
-            <img [src]='accounts[3].profile_picture' alt="profile" width="200" height="200" />
+            <img [src]='currentAcc?.profile_picture' alt="profile" width="200" height="200" />
         </div>
         <div style="display: flex;justify-content: center;">
-            <h3>{{accounts[3].name}}</h3>
+            <h3>{{currentAcc?.name}}</h3>
         </div>
         <div class="info">
             <div class="icon-profile">
@@ -12,7 +12,7 @@
             </div>
             <div>
                 Date of Birth<br />
-                <span>{{accounts[3].date_of_birth}}</span>
+                <span>{{currentAcc?.date_of_birth}}</span>
             </div>
         </div>
         <div class="info">
@@ -21,7 +21,7 @@
             </div>
             <div>
                 Gender<br />
-                <span>{{accounts[3].gender}}</span>
+                <span>{{currentAcc?.gender}}</span>
             </div>
         </div>
         <div class="info">
@@ -30,7 +30,7 @@
             </div>
             <div>
                 Contact Info.<br />
-                <span>{{accounts[3].phone_number}}</span>
+                <span>{{currentAcc?.phone_number}}</span>
             </div>
         </div>
         <div class="info">
@@ -39,7 +39,7 @@
             </div>
             <div>
                 Emergency Contacts<br />
-                <span>{{accounts[3].emergency_contact}}</span>
+                <span>{{currentAcc?.emergency_contact}}</span>
             </div>
         </div>
         <div class="info">
@@ -48,7 +48,7 @@
             </div>
             <div>
                 Insurance Provider<br />
-                <span>{{accounts[3].insurance_type}}</span>
+                <span>{{currentAcc?.insurance_type}}</span>
             </div>
         </div>
         <div style="display: flex;justify-content: center;padding-top: 5px;">

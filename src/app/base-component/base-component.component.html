@@ -54,12 +54,12 @@
 <div class="container" style="padding-top: 20px;">
     <div class="row">
         <div class="col">
-            <app-patients [accounts]="accounts"></app-patients>    
+            <app-patients [accounts]="accounts" (currentAccount)="currentAccount($event)"></app-patients>    
         </div>
-        <div class="col-6">
-            <app-diagnosis [accounts]="accounts"></app-diagnosis>
+        <div class="col-6" *ngIf="currentAcc">
+            <app-diagnosis [currentAcc]="currentAcc" [labels]="labels" [data1]="data1" [data2]="data2"></app-diagnosis>
         </div>
-        <div class="col">
-            <app-profile [accounts]="accounts"></app-profile>
+        <div class="col" *ngIf="currentAcc">
+            <app-profile [currentAcc]="currentAcc"></app-profile>
         </div>
     </div>
