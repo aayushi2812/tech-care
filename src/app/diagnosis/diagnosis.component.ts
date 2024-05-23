@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Chart } from 'chart.js/auto';
+import { Chart, ChartType, registerables } from 'chart.js';
 import {MatTableModule} from '@angular/material/table';
 import { AccountsService } from '../accounts.service';
 import { NgIf } from '@angular/common';
@@ -16,37 +16,13 @@ export class DiagnosisComponent implements OnInit, OnChanges{
   @Input() labels: any;
   @Input() data1: any;
   @Input() data2: any;
-
-  ngOnInit(): void {
-    new Chart('lineChart',this.lineChart);
-  }
-
-  dataSource : any;
-  constructor() {
-  }
-
   lineChart: any;
-  respiratory_rate: any;
-  temperature: any;
-  heart_rate: any;
+  line: ChartType = "line";
   
-  loading: boolean =  false;
-
-  ngOnChanges(changes: SimpleChanges){
-    if(this.currentAcc){
-      this.dataSource = this.currentAcc.diagnostic_list;
-    }
-
-    const lengthOfArray = changes['currentAcc'].currentValue.diagnosis_history.length;
-    this.respiratory_rate= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].respiratory_rate.value;
-    this.temperature= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].temperature.value;
-    this.heart_rate= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].heart_rate.value;
-    this.updateChart();
-  }
-
-  updateChart(){
-    this.lineChart = {
-      type: 'line',
+  ngOnInit(): void {
+    Chart.register(...registerables);
+    this.lineChart = new Chart('lineChart', {
+      type: this.line,
      data: {
          labels : this.labels, 
          datasets: [{
@@ -59,7 +35,7 @@ export class DiagnosisComponent implements OnInit, OnChanges{
               'rgb(192, 53, 150)'
              ],
              borderWidth: 2,
-             lineTension: 0.4
+            //  lineTension: 0.4
          },
          {
           label: 'Diastolic',
@@ -71,20 +47,69 @@ export class DiagnosisComponent implements OnInit, OnChanges{
               'rgb(148, 53, 192)'
           ],
           borderWidth: 2,
-          lineTension: 0.4
+          // lineTension: 0.4
       }
         ]
      },
      options: {
          scales: {
-             yAxes: [{
-                 ticks: {
-                     beginAtZero: true
-                 }
-             }]
+            //  yAxes: [{
+            //      ticks: {
+            //          beginAtZero: true
+            //      }
+            //  }]
          }
      }
-   };
+   });
+  }
+
+  dataSource : any;
+  constructor() {
+    
+  }
+
+  
+  respiratory_rate: any;
+  temperature: any;
+  heart_rate: any;
+  
+  loading: boolean =  false;
+
+  ngOnChanges(changes: SimpleChanges){
+    console.log(changes);
+    // console.log(this.labels);
+    this.lineChart.data.datasets.forEach((dataset: any) => {
+      dataset.data.forEach((d: any) => {
+        dataset.data.pop();
+        this.lineChart.data.labels.pop();
+      })
+    });
+
+    if(this.currentAcc){
+      this.dataSource = this.currentAcc.diagnostic_list;
+    }
+
+    const lengthOfArray = changes['currentAcc'].currentValue.diagnosis_history.length;
+    console.log('length '+ lengthOfArray);
+    this.respiratory_rate= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].respiratory_rate.value;
+    this.temperature= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].temperature.value;
+    this.heart_rate= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].heart_rate.value;
+
+    for(var i=0;i<lengthOfArray;i++){
+      var temp = this.currentAcc.diagnosis_history[i];
+      this.labels.push(temp.month + " " +temp.year);
+    }
+
+    this.lineChart.data.labels = this.labels;
+
+    this.updateChart();
+  }
+
+  updateChart(){
+    this.lineChart.data.labels = this.labels;
+    this.lineChart.data.datasets[0].data = this.data1;
+    this.lineChart.data.datasets[1].data = this.data2;
+    this.lineChart.update();
   }
 
   displayedColumns: string[] = ['diagnosis', 'description', 'status'];
