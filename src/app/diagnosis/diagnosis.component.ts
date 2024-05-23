@@ -64,10 +64,7 @@ export class DiagnosisComponent implements OnInit, OnChanges{
   }
 
   dataSource : any;
-  constructor() {
-    
-  }
-
+  constructor() { }
   
   respiratory_rate: any;
   temperature: any;
@@ -76,8 +73,6 @@ export class DiagnosisComponent implements OnInit, OnChanges{
   loading: boolean =  false;
 
   ngOnChanges(changes: SimpleChanges){
-    console.log(changes);
-    // console.log(this.labels);
     this.lineChart.data.datasets.forEach((dataset: any) => {
       dataset.data.forEach((d: any) => {
         dataset.data.pop();
@@ -90,7 +85,6 @@ export class DiagnosisComponent implements OnInit, OnChanges{
     }
 
     const lengthOfArray = changes['currentAcc'].currentValue.diagnosis_history.length;
-    console.log('length '+ lengthOfArray);
     this.respiratory_rate= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].respiratory_rate.value;
     this.temperature= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].temperature.value;
     this.heart_rate= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].heart_rate.value;
@@ -98,17 +92,14 @@ export class DiagnosisComponent implements OnInit, OnChanges{
     for(var i=0;i<lengthOfArray;i++){
       var temp = this.currentAcc.diagnosis_history[i];
       this.labels.push(temp.month + " " +temp.year);
+      this.data1.push(temp.blood_pressure.systolic.value);
+      this.data2.push(temp.blood_pressure.diastolic.value);
     }
-
-    this.lineChart.data.labels = this.labels;
 
     this.updateChart();
   }
 
   updateChart(){
-    this.lineChart.data.labels = this.labels;
-    this.lineChart.data.datasets[0].data = this.data1;
-    this.lineChart.data.datasets[1].data = this.data2;
     this.lineChart.update();
   }
 
