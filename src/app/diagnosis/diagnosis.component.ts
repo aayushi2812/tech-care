@@ -62,6 +62,7 @@ export class DiagnosisComponent implements OnInit, OnChanges{
          }
      }
    });
+   this.getCurrentHealthRates(this.currentAcc)
   }
 
   dataSource : any;
@@ -84,11 +85,8 @@ export class DiagnosisComponent implements OnInit, OnChanges{
     if(this.currentAcc){
       this.dataSource = this.currentAcc.diagnostic_list;
     }
-
     const lengthOfArray = changes['currentAcc'].currentValue.diagnosis_history.length;
-    this.respiratory_rate= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].respiratory_rate.value;
-    this.temperature= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].temperature.value;
-    this.heart_rate= changes['currentAcc'].currentValue.diagnosis_history[lengthOfArray-1].heart_rate.value;
+    this.getCurrentHealthRates(changes['currentAcc'].currentValue);
 
     for(var i=0;i<lengthOfArray;i++){
       var temp = this.currentAcc.diagnosis_history[i];
@@ -98,6 +96,13 @@ export class DiagnosisComponent implements OnInit, OnChanges{
     }
 
     this.updateChart();
+  }
+
+  getCurrentHealthRates(changes: any){
+    const lengthOfArray = changes.diagnosis_history.length;
+    this.respiratory_rate= changes.diagnosis_history[lengthOfArray-1].respiratory_rate.value;
+    this.temperature= changes.diagnosis_history[lengthOfArray-1].temperature.value;
+    this.heart_rate= changes.diagnosis_history[lengthOfArray-1].heart_rate.value;
   }
 
   updateChart(){
