@@ -20,6 +20,7 @@ export class DiagnosisComponent implements OnInit, OnChanges{
   line: ChartType = "line";
   
   ngOnInit(): void {
+    this.dataSource = this.currentAcc.diagnostic_list;
     Chart.register(...registerables);
     this.lineChart = new Chart('lineChart', {
       type: this.line,

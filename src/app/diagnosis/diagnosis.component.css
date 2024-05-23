@@ -17,3 +17,12 @@
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 3px solid rgb(199, 199, 199);  /* creates padding around scroll thumb */
   }
+  .cards-colored{
+    display: flex;justify-content: space-between;padding-top: 15px;
+  }
+  .diagnostic-list{
+    padding-top: 10px;padding-left: 10px;
+  }
+  .dl-card{
+    margin-top: 10px;height: 245px;
+  }
